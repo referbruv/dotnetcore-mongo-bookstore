@@ -1,0 +1,23 @@
+<form [formGroup]="form">
+    <div class="form-group">
+        <label for="name">Name</label>
+        <input type="text" class="form-control" formControlName="name" />
+    </div>
+    <div class="form-group">
+        <label for="Description">Description</label>
+        <textarea type="text" class="form-control" formControlName="description"></textarea>
+    </div>
+    <div class="form-group">
+        <label for="isdn">ISDN</label>
+        <input type="text" class="form-control" formControlName="isdn" />
+    </div>
+    <div class="form-group">
+        <label for="price">Price</label>
+        <input type="number" class="form-control" formControlName="price" />
+    </div>
+    <div class="form-group">
+        <label for="authorName">Author Name</label>
+        <input type="text" class="form-control" formControlName="authorName" />
+    </div>
+    <button class="btn btn-primary" [disabled]="form.invalid" type="button" (click)="save()">Save</button>
+</form>

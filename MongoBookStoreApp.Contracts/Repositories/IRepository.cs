@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Linq;
+using System.Linq.Expressions;
+using System.Threading.Tasks;
 
 namespace MongoBookStoreApp.Contracts.Repositories
 {
@@ -7,12 +9,12 @@ namespace MongoBookStoreApp.Contracts.Repositories
     {
         IQueryable<T> GetAll();
 
-        T GetSingle(Func<T, bool> predicate);
+        Task<T> GetSingleAsync(Expression<Func<T, bool>> predicate);
 
-        T AddAsync(T obj);
+        Task AddAsync(T obj);
 
-        T Update(T obj);
+        Task<T> UpdateAsync(T obj);
 
-        void DeleteAsync(T obj);
+        Task DeleteAsync(Expression<Func<T, bool>> predicate);
     }
 }

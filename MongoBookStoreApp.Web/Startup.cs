@@ -5,6 +5,7 @@ using Microsoft.AspNetCore.SpaServices.AngularCli;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using MongoBookStoreApp.Contracts;
 using MongoBookStoreApp.Contracts.Services;
 using MongoBookStoreApp.Core.Data;
 using MongoBookStoreApp.Core.Data.Services;
@@ -23,9 +24,11 @@ namespace MongoBookStoreApp
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            services.Configure<DatabaseSettings>(Configuration.GetSection("MongoConnection"));
+
             services.AddSingleton<MongoContext>();
+
             services.AddScoped<IDataService, DataService>();
-            
 
             services.AddControllersWithViews();
             // In production, the Angular files will be served from this directory
@@ -33,6 +36,8 @@ namespace MongoBookStoreApp
             {
                 configuration.RootPath = "ClientApp/dist";
             });
+
+            services.AddSwaggerGen();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -55,6 +60,14 @@ namespace MongoBookStoreApp
             {
                 app.UseSpaStaticFiles();
             }
+
+            app.UseSwagger();
+
+            app.UseSwaggerUI(c =>
+            {
+                c.SwaggerEndpoint("/swagger/v1/swagger.json", "Books API V1");
+                c.RoutePrefix = "docs";
+            });
 
             app.UseRouting();
 

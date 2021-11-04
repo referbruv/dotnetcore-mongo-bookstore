@@ -1,4 +1,5 @@
-﻿using MongoBookStoreApp.Contracts;
+﻿using Microsoft.Extensions.Options;
+using MongoBookStoreApp.Contracts;
 using MongoDB.Driver;
 using System;
 
@@ -6,13 +7,17 @@ namespace MongoBookStoreApp.Core.Data
 {
     public class MongoContext
     {
+        private readonly MongoClient _client;
         private readonly IMongoDatabase _database;
 
-        public MongoContext(DatabaseSettings settings)
+        public MongoContext(IOptions<DatabaseSettings> dbOptions)
         {
-            var client = new MongoClient(settings.ConnectionString);
-            _database = client.GetDatabase(settings.DatabaseName);
+            var settings = dbOptions.Value;
+            _client = new MongoClient(settings.ConnectionString);
+            _database = _client.GetDatabase(settings.DatabaseName);
         }
+
+        public IMongoClient Client => _client;
 
         public IMongoDatabase Database => _database;
     }

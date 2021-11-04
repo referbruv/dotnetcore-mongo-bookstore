@@ -5,11 +5,17 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="Data\DTO\**" />
+    <EmbeddedResource Remove="Data\DTO\**" />
+    <None Remove="Data\DTO\**" />
+  </ItemGroup>
+
+  <ItemGroup>
     <ProjectReference Include="..\MongoBookStoreApp.Contracts\MongoBookStoreApp.Contracts.csproj" />
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Data\DTO\" />
+    <PackageReference Include="Microsoft.Extensions.Options" Version="5.0.0" />
   </ItemGroup>
 
 </Project>

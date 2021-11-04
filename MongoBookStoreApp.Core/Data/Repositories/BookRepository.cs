@@ -1,9 +1,10 @@
-﻿using MongoBookStoreApp.Contracts.Entities;
+﻿using MongoBookStoreApp.Contracts;
+using MongoBookStoreApp.Contracts.Entities;
 using MongoBookStoreApp.Contracts.Repositories;
 using MongoDB.Driver;
 using System;
-using System.Collections.Generic;
 using System.Linq;
+using System.Linq.Expressions;
 using System.Threading.Tasks;
 
 namespace MongoBookStoreApp.Core.Data.Repositories
@@ -14,7 +15,7 @@ namespace MongoBookStoreApp.Core.Data.Repositories
 
         public BookRepository(IMongoDatabase database)
         {
-            _books = database.GetCollection<Book>("Books");
+            _books = database.GetCollection<Book>(MongoCollectionNames.Books);
         }
 
         public async Task AddAsync(Book obj)
@@ -22,9 +23,9 @@ namespace MongoBookStoreApp.Core.Data.Repositories
             await _books.InsertOneAsync(obj);
         }
 
-        public async Task DeleteAsync(Book obj)
+        public async Task DeleteAsync(Expression<Func<Book, bool>> predicate)
         {
-            var result = await _books.DeleteOneAsync(x => x.Id == obj.Id);
+            _ = await _books.DeleteOneAsync(predicate);
         }
 
         public IQueryable<Book> GetAll()
@@ -32,23 +33,15 @@ namespace MongoBookStoreApp.Core.Data.Repositories
             return _books.AsQueryable();
         }
 
-        public Book GetSingle(Func<Book, bool> predicate)
+        public async Task<Book> GetSingleAsync(Expression<Func<Book, bool>> predicate)
         {
-            return _books.FindAsync();
+            var filter = Builders<Book>.Filter.Where(predicate);
+            return (await _books.FindAsync(filter)).FirstOrDefault();
         }
 
-        public Book Update(Book obj)
+        public async Task<Book> UpdateAsync(Book obj)
         {
-            int i = 0;
-            for (; i < _books.Count; i++)
-            {
-                if (_books[i].Id == obj.Id)
-                {
-                    _books[i] = obj;
-                    break;
-                }
-            }
-            return _books.ElementAt(i);
+            return await _books.FindOneAndReplaceAsync(x => x.Id == obj.Id, obj);
         }
     }
 }

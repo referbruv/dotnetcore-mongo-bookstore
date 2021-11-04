@@ -1,0 +1,23 @@
+<a class="btn btn-secondary my-2 float-right" [routerLink]="['/books/add']">Add Book</a>
+<table class="table table-bordered">
+    <thead class="thead-dark">
+        <tr>
+            <th>#</th>
+            <th>Name</th>
+            <th>ISDN</th>
+            <th>Author Name</th>
+            <th>Added On</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let book of books;">
+            <td><a [routerLink]="['edit', book.id]">{{book.id}}</a></td>
+            <td>{{book.name}}</td>
+            <td>{{book.isdn}}</td>
+            <td>{{book.authorName}}</td>
+            <td>{{book.addedOn | date:'dd/MM/yyyy'}}</td>
+            <td><a style="cursor: pointer;" class="text-danger" (click)="delete(book.id)">delete</a></td>
+        </tr>
+    </tbody>
+</table>
