@@ -1,4 +1,5 @@
 ﻿using MongoBookStoreApp.Contracts;
+using MongoBookStoreApp.Contracts.DTO;
 using MongoBookStoreApp.Contracts.Entities;
 using MongoBookStoreApp.Contracts.Repositories;
 using MongoDB.Driver;
@@ -17,6 +18,49 @@ namespace MongoBookStoreApp.Core.Data.Repositories
         {
             _books = database.GetCollection<Book>(MongoCollectionNames.Books);
         }
+
+        public async Task<Book> GetBookByIdAsync(string bookId)
+        {
+            return await GetSingleAsync(x => x.Id == bookId);
+        }
+
+        public async Task CreateBookAsync(CreateOrUpdateBookDto model)
+        {
+            Book book = new Book
+            {
+                Name = model.Name,
+                AuthorName = model.AuthorName,
+                ISBN = model.ISBN,
+                Description = model.Description,
+                Price = model.Price,
+                AddedOn = DateTime.Now
+            };
+
+            await AddAsync(book);
+        }
+
+        public async Task<Book> UpdateBookAsync(string id, CreateOrUpdateBookDto model)
+        {
+            Book book = new Book
+            {
+                Id = id,
+                Name = model.Name,
+                AuthorName = model.AuthorName,
+                ISBN = model.ISBN,
+                Description = model.Description,
+                Price = model.Price,
+                AddedOn = DateTime.Now
+            };
+
+            return await UpdateAsync(book);
+        }
+
+        public async Task DeleteBookAsync(string id)
+        {
+            await DeleteAsync(x => x.Id == id);
+        }
+
+        #region IRepository implementation
 
         public async Task AddAsync(Book obj)
         {
@@ -41,7 +85,22 @@ namespace MongoBookStoreApp.Core.Data.Repositories
 
         public async Task<Book> UpdateAsync(Book obj)
         {
+            var filter = Builders<Book>.Filter.Where(x => x.Id == obj.Id);
+            
+            var updateDefBuilder = Builders<Book>.Update;
+            var updateDef = updateDefBuilder.Combine(new UpdateDefinition<Book>[]
+            {
+                updateDefBuilder.Set(x => x.Name, obj.Name),
+                updateDefBuilder.Set(x => x.Description, obj.Description),
+                updateDefBuilder.Set(x => x.AuthorName, obj.AuthorName),
+                updateDefBuilder.Set(x => x.ISBN, obj.ISBN),
+                updateDefBuilder.Set(x => x.Price, obj.Price)
+            });
+            await _books.FindOneAndUpdateAsync(filter, updateDef);
+
             return await _books.FindOneAndReplaceAsync(x => x.Id == obj.Id, obj);
         }
+
+        #endregion
     }
 }

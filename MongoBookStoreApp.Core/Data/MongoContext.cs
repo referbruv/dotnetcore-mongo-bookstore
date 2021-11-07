@@ -1,7 +1,6 @@
 ﻿using Microsoft.Extensions.Options;
 using MongoBookStoreApp.Contracts;
 using MongoDB.Driver;
-using System;
 
 namespace MongoBookStoreApp.Core.Data
 {

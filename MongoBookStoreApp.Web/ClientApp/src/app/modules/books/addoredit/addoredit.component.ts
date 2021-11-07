@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
-import { Book } from '../../../models/book';
+import { Book, ErrorResponse } from '../../../models/book';
 import { BooksService } from '../../../services/books.service';
 
 @Component({
@@ -12,6 +12,8 @@ import { BooksService } from '../../../services/books.service';
 export class AddoreditComponent implements OnInit {
   form: FormGroup;
   isEdit: boolean = false;
+  isErrorResponse: boolean = false;
+  error: string;
 
   constructor(private bs: BooksService, private activatedRoute: ActivatedRoute, private router: Router, private formBuilder: FormBuilder) { }
 
@@ -20,7 +22,7 @@ export class AddoreditComponent implements OnInit {
       id: new FormControl({ value: '', disabled: true }),
       name: new FormControl('', [Validators.required]),
       description: new FormControl('', [Validators.required]),
-      isdn: new FormControl('', [Validators.required]),
+      isbn: new FormControl('', [Validators.required]),
       price: new FormControl('', [Validators.required]),
       authorName: new FormControl('', [Validators.required])
     });
@@ -34,7 +36,7 @@ export class AddoreditComponent implements OnInit {
             this.form.get('id').patchValue(book.id);
             this.form.get('name').patchValue(book.name);
             this.form.get('description').patchValue(book.description);
-            this.form.get('isdn').patchValue(book.isdn);
+            this.form.get('isbn').patchValue(book.isbn);
             this.form.get('price').patchValue(book.price);
             this.form.get('authorName').patchValue(book.authorName);
           });
@@ -49,10 +51,18 @@ export class AddoreditComponent implements OnInit {
     if (this.isEdit) {
       this.bs.update(book).subscribe((res) => {
         this.router.navigate(['/']);
-      })
+      }, (err: ErrorResponse) => {
+        this.isErrorResponse = true;
+        this.error = err.errors.join('<br>');
+        console.log(err);
+      });
     } else {
       this.bs.add(book).subscribe((res) => {
         this.router.navigate(['/']);
+      }, (err: ErrorResponse) => {
+        this.isErrorResponse = true;
+        this.error = err.errors.join('<br>');
+        console.log(err);
       })
     }
 

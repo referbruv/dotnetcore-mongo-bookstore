@@ -1,14 +1,17 @@
+using FluentValidation;
+using FluentValidation.AspNetCore;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.AspNetCore.SpaServices.AngularCli;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using MongoBookStoreApp.Contracts;
+using MongoBookStoreApp.Contracts.DTO;
 using MongoBookStoreApp.Contracts.Services;
 using MongoBookStoreApp.Core.Data;
 using MongoBookStoreApp.Core.Data.Services;
+using MongoBookStoreApp.Core.Validators;
 
 namespace MongoBookStoreApp
 {
@@ -31,6 +34,15 @@ namespace MongoBookStoreApp
             services.AddScoped<IDataService, DataService>();
 
             services.AddControllersWithViews();
+
+            //services.AddFluentValidation(x =>
+            //{
+            //    x.DisableDataAnnotationsValidation = true;
+            //    x.ImplicitlyValidateChildProperties = true;
+            //});
+
+            services.AddSingleton<IValidator<CreateOrUpdateBookDto>, CreateOrUpdateBookDtoValidator>();
+
             // In production, the Angular files will be served from this directory
             services.AddSpaStaticFiles(configuration =>
             {
