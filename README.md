@@ -27,6 +27,10 @@ To get started, just pull the solution into your local directory and run the bel
 > docker-compose up --force-recreate --build
 ```
 
+Once the container is up, visit http://localhost:5000 in your local browser. You should see the application running as below:
+
+![MongoBookStore in Action](assets/bookstore.png?raw=true "MongoBookStore solution")
+
 # Show your Support 
 
 Leave a Star if you find the solution useful. If you find the article helpful, support me by:
