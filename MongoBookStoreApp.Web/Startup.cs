@@ -5,6 +5,7 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.SpaServices.AngularCli;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.FileProviders;
 using Microsoft.Extensions.Hosting;
 using MongoBookStoreApp.Contracts;
 using MongoBookStoreApp.Contracts.DTO;
@@ -12,6 +13,7 @@ using MongoBookStoreApp.Contracts.Services;
 using MongoBookStoreApp.Core.Data;
 using MongoBookStoreApp.Core.Data.Services;
 using MongoBookStoreApp.Core.Validators;
+using System.IO;
 
 namespace MongoBookStoreApp
 {
@@ -68,6 +70,7 @@ namespace MongoBookStoreApp
 
             app.UseHttpsRedirection();
             app.UseStaticFiles();
+
             if (!env.IsDevelopment())
             {
                 app.UseSpaStaticFiles();

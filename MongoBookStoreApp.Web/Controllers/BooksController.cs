@@ -1,5 +1,4 @@
 ﻿using FluentValidation;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using MongoBookStoreApp.Contracts.DTO;
 using MongoBookStoreApp.Contracts.Entities;

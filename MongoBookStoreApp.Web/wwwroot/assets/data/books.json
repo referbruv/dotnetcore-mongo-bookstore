@@ -1,0 +1,37 @@
+[
+    {
+        "Name": "The Alchemist",
+        "Description": "A Wonderful Journey",
+        "ISBN": "1122334455667",
+        "Price": 1000,
+        "AuthorName": "Paulo Coelho"
+    },
+    {
+        "Name": "The Zahir",
+        "Description": "A Wonderful Journey",
+        "ISBN": "1122334455667",
+        "Price": 1000,
+        "AuthorName": "Paulo Coelho"
+    },
+    {
+        "Name": "Veronica decides to die",
+        "Description": "A Wonderful Journey",
+        "ISBN": "1122334455667",
+        "Price": 1000,
+        "AuthorName": "Paulo Coelho"
+    },
+    {
+        "Name": "The Pilgrimage",
+        "Description": "A Wonderful Journey",
+        "ISBN": "1122334455667",
+        "Price": 1000,
+        "AuthorName": "Paulo Coelho"
+    },
+    {
+        "Name": "The Spy",
+        "Description": "A Wonderful Journey",
+        "ISBN": "1122334455667",
+        "Price": 1000,
+        "AuthorName": "Paulo Coelho"
+    }
+]

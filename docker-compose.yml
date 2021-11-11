@@ -1,0 +1,17 @@
+version: "3"
+
+services:
+    mydb:
+      image: 'mongo'
+      ports:
+        - 27017:27017
+    bookstore:
+      build: 
+        context: .
+        dockerfile: 'MongoBookStoreApp.Web/Dockerfile'
+      environment:
+         - "MongoConnection__ConnectionString=mongodb://mydb:27017"
+         - "MongoConnection__DatabaseName=BookstoreDb"
+      ports:
+      - "5000:5000"
+      - "5001:5001"

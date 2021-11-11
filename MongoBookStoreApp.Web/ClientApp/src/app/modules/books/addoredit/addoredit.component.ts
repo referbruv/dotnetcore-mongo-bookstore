@@ -14,6 +14,7 @@ export class AddoreditComponent implements OnInit {
   isEdit: boolean = false;
   isErrorResponse: boolean = false;
   error: string;
+  bookId: string;
 
   constructor(private bs: BooksService, private activatedRoute: ActivatedRoute, private router: Router, private formBuilder: FormBuilder) { }
 
@@ -29,11 +30,10 @@ export class AddoreditComponent implements OnInit {
 
     this.activatedRoute.paramMap.subscribe((p) => {
       if (p.has('id')) {
-        let bookId = p.get('id');
-        if (bookId) {
+        this.bookId = p.get('id');
+        if (this.bookId) {
           this.isEdit = true;
-          this.bs.getSingle(bookId).subscribe((book: Book) => {
-            this.form.get('id').patchValue(book.id);
+          this.bs.getSingle(this.bookId).subscribe((book: Book) => {
             this.form.get('name').patchValue(book.name);
             this.form.get('description').patchValue(book.description);
             this.form.get('isbn').patchValue(book.isbn);
@@ -47,8 +47,8 @@ export class AddoreditComponent implements OnInit {
 
   save() {
     let book = <Book>this.form.value;
-
     if (this.isEdit) {
+      book.id = this.bookId;
       this.bs.update(book).subscribe((res) => {
         this.router.navigate(['/']);
       }, (err: ErrorResponse) => {

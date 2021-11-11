@@ -16,7 +16,7 @@ namespace MongoBookStoreApp.Core.Validators
                 .Cascade(CascadeMode.Stop)
                 .NotEmpty().WithMessage("ISDN is required")
                 .Must(x => x.Length == 13).WithMessage("Invalid ISBN provided")
-                .Must(x => Regex.IsMatch(x, @"^\d$")).WithMessage("Invalid ISBN provided");
+                .Must(x => Regex.IsMatch(x, @"^\d+")).WithMessage("Invalid ISBN provided");
             
             RuleFor(x => x.Price).NotEmpty().WithMessage("Price is required");
             
