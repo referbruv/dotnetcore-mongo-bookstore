@@ -1,6 +1,6 @@
 # dotnetcore-mongo-bookstore
 
-A Sample Application to demonstrate working with NoSQL via MongoDB from an Angular-DotnetCore application. This solution helps you to quickly get started working with MongoDB database integration in ASP.NET Core, all while following the best practices and a Clean Architecture.
+A Sample Application to demonstrate working with NoSQL via MongoDB from an Angular Front-end with ASP.NET Core backend. This solution helps you to quickly get started working with MongoDB database integration in ASP.NET Core, all while following the best practices and a Clean Architecture.
 
 # What is MongoDB?
 
@@ -19,9 +19,26 @@ This solution helps you get a clear picture about how to configure and connect t
 5. Docker scripts included making the solution container deployment ready
 6. One command setup using Docker-Compose, file included
 
+# Technologies
+
+![ASP.NET Core (.NET 5)](https://docs.microsoft.com/en-us/aspnet/core/introduction-to-aspnet-core?view=aspnetcore-5.0)
+![Angular](https://angular.io/)
+![Mongo DB](https://www.mongodb.com/)
+![Fluent Validation](https://fluentvalidation.net/)
+![Docker](https://www.docker.com/)
+
+
 # How to get started
 
-To get started, just pull the solution into your local directory and run the below command in your Terminal / Command-Line (requires a running Docker setup)
+1. Install .NET 5 SDK
+2. Install the latest Node.js LTS
+3. Navigate to ./MongoBookStoreApp.Web/ClientApp and run npm install
+4. Navigate to ./MongoBookStoreApp.Web/ClientApp and run npm start to launch the front end (Angular)
+5. Navigate to ./MongoBookStoreApp.Web/ and run dotnet run to launch the back end (ASP.NET Core Web API)
+
+# Docker Deployment
+
+To run the application through docker, pull the solution into your local directory and run the below command in your Terminal / Command-Line (requires a working Docker installation and Docker running)
 
 ```
 > docker-compose up --force-recreate --build
