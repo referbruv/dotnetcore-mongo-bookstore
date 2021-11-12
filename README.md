@@ -48,6 +48,10 @@ Once the container is up, visit http://localhost:5000 in your local browser. You
 
 ![MongoBookStore in Action](assets/bookstore.png?raw=true "MongoBookStore solution")
 
+# Issues or Ideas?
+
+If you face any issues or would like to drop a suggestion, ![raise an issue](https://github.com/referbruv/dotnetcore-mongo-bookstore/issues/new/choose)
+
 # Show your Support 
 
 Leave a Star if you find the solution useful. If you find the article helpful, support me by:
