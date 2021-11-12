@@ -21,11 +21,11 @@ This solution helps you get a clear picture about how to configure and connect t
 
 # Technologies
 
-![ASP.NET Core (.NET 5)](https://docs.microsoft.com/en-us/aspnet/core/introduction-to-aspnet-core?view=aspnetcore-5.0)
-![Angular](https://angular.io/)
-![Mongo DB](https://www.mongodb.com/)
-![Fluent Validation](https://fluentvalidation.net/)
-![Docker](https://www.docker.com/)
+* ![ASP.NET Core (.NET 5)](https://docs.microsoft.com/en-us/aspnet/core/introduction-to-aspnet-core?view=aspnetcore-5.0)
+* ![Angular](https://angular.io/)
+* ![Mongo DB](https://www.mongodb.com/)
+* ![Fluent Validation](https://fluentvalidation.net/)
+* ![Docker](https://www.docker.com/)
 
 
 # How to get started
