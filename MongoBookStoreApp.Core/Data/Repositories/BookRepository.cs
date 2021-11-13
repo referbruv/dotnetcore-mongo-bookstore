@@ -32,8 +32,7 @@ namespace MongoBookStoreApp.Core.Data.Repositories
                 AuthorName = model.AuthorName,
                 ISBN = model.ISBN,
                 Description = model.Description,
-                Price = model.Price,
-                AddedOn = DateTime.Now
+                Price = model.Price
             };
 
             await AddAsync(book);
@@ -48,8 +47,7 @@ namespace MongoBookStoreApp.Core.Data.Repositories
                 AuthorName = model.AuthorName,
                 ISBN = model.ISBN,
                 Description = model.Description,
-                Price = model.Price,
-                AddedOn = DateTime.Now
+                Price = model.Price
             };
 
             return await UpdateAsync(book);

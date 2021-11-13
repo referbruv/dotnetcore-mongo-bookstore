@@ -1,23 +1,25 @@
 <a class="btn btn-secondary my-2 float-right" [routerLink]="['/books/add']">Add Book</a>
 <table class="table table-bordered">
-    <thead class="thead-dark">
-        <tr>
-            <th>#</th>
-            <th>Name</th>
-            <th>ISBN</th>
-            <th>Author Name</th>
-            <th>Added On</th>
-            <th></th>
-        </tr>
-    </thead>
-    <tbody>
-        <tr *ngFor="let book of books;">
-            <td><a [routerLink]="['edit', book.id]">{{book.id}}</a></td>
-            <td>{{book.name}}</td>
-            <td>{{book.isbn}}</td>
-            <td>{{book.authorName}}</td>
-            <td>{{book.addedOn | date:'dd/MM/yyyy'}}</td>
-            <td><a style="cursor: pointer;" class="text-danger" (click)="delete(book.id)">delete</a></td>
-        </tr>
-    </tbody>
+  <thead class="thead-dark">
+    <tr>
+      <th>#</th>
+      <th>Name</th>
+      <th>Author</th>
+      <th>Price</th>
+      <th>ISBN</th>
+      <th>Added On</th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let book of books;">
+      <td><a [routerLink]="['edit', book.id]">{{book.id}}</a></td>
+      <td>{{book.name}}</td>
+      <td>{{book.authorName}}</td>
+      <td>{{book.price | currency:'INR':'symbol':'1.1-2'}}</td>
+      <td>{{book.isbn}}</td>
+      <td>{{book.addedOn | date:'dd/MM/yyyy'}}</td>
+      <td><a style="cursor: pointer;" class="text-danger" (click)="delete(book.id)">delete</a></td>
+    </tr>
+  </tbody>
 </table>

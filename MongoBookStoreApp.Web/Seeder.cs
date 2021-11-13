@@ -27,7 +27,6 @@ namespace MongoBookStoreApp.Web
 
                 foreach (var book in books)
                 {
-                    book.AddedOn = DateTime.Now;
                     await db.Books.AddAsync(book);
                 }
 
