@@ -6,6 +6,11 @@ namespace MongoBookStoreApp.Contracts.Entities
 {
     public class Book
     {
+        public Book()
+        {
+            this.AddedOn = DateTime.UtcNow;
+        }
+
         [BsonId]
         [BsonRepresentation(BsonType.ObjectId)]
         public string Id { get; set; }

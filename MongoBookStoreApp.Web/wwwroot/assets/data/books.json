@@ -1,37 +1,44 @@
 [
-    {
-        "Name": "The Alchemist",
-        "Description": "A Wonderful Journey",
-        "ISBN": "1122334455667",
-        "Price": 1000,
-        "AuthorName": "Paulo Coelho"
-    },
-    {
-        "Name": "The Zahir",
-        "Description": "A Wonderful Journey",
-        "ISBN": "1122334455667",
-        "Price": 1000,
-        "AuthorName": "Paulo Coelho"
-    },
-    {
-        "Name": "Veronica decides to die",
-        "Description": "A Wonderful Journey",
-        "ISBN": "1122334455667",
-        "Price": 1000,
-        "AuthorName": "Paulo Coelho"
-    },
-    {
-        "Name": "The Pilgrimage",
-        "Description": "A Wonderful Journey",
-        "ISBN": "1122334455667",
-        "Price": 1000,
-        "AuthorName": "Paulo Coelho"
-    },
-    {
-        "Name": "The Spy",
-        "Description": "A Wonderful Journey",
-        "ISBN": "1122334455667",
-        "Price": 1000,
-        "AuthorName": "Paulo Coelho"
-    }
+  {
+    "Name": "The Alchemist",
+    "Description": "This story, dazzling in its powerful simplicity and soul-stirring wisdom, is about an Andalusian shepherd boy named Santiago, who travels from his homeland in Spain to the Egyptian desert in search of a treasure buried near the Pyramids. ",
+    "ISBN": "1122334455667",
+    "Price": 1000,
+    "AuthorName": "Paulo Coelho"
+  },
+  {
+    "Name": "The Lost Symbol",
+    "Description": "A thriller set in Washington, D.C., after the events of The Da Vinci Code, and relies on Freemasonry for both its recurring theme and its major characters.",
+    "ISBN": "9796808145791",
+    "Price": 1000,
+    "AuthorName": "Dan Brown"
+  },
+  {
+    "Name": "The Zahir",
+    "Description": "The Zahir is an amazing book written by Paulo Coelho this brilliant thought provoking book helps readers to think and discover their true self.",
+    "ISBN": "9790891591114",
+    "Price": 1000,
+    "AuthorName": "Paulo Coelho"
+  },
+  {
+    "Name": "Veronica decides to die",
+    "Description": "It tells the story of Veronika, a 24-year-old Slovenian who appears to have everything in life going for her, but who decides to kill herself.",
+    "ISBN": "9799179072369",
+    "Price": 1000,
+    "AuthorName": "Paulo Coelho"
+  },
+  {
+    "Name": "The Immortals of Meluha",
+    "Description": "The Immortals of Meluha is the first book of Amish Tripathi, first book of Amishverse, and also the first book of Shiva Trilogy.",
+    "ISBN": "9788267619289",
+    "Price": 1000,
+    "AuthorName": "Amish Tripathi"
+  },
+  {
+    "Name": "Zero to One",
+    "Description": "Zero to One: Notes on Startups, or How to Build the Future is a 2014 book by the American entrepreneur and investor Peter Thiel co-written with Blake Masters.",
+    "ISBN": "9782210912199",
+    "Price": 600,
+    "AuthorName": "Peter Theil"
+  }
 ]
